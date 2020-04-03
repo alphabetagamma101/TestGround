@@ -1,5 +1,5 @@
 /**
- * Part of GMain utils
+ * Part of GMainUtility utils
  */
 class Node {
     String data;

@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 /**
  * GOAL: Single class with internal classes to support
- * utility behaviors. This class can be dumped an utilized
+ * utility behaviors. This class can be dumped as utility
  * directly.
  *
  * 1. Needs Node class along with it
