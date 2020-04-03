@@ -217,7 +217,7 @@ public class BinaryTreeBehaviors {
         }
 
         protected static Node populateDataForBinaryTreeZ() {
-            Node a = prepareBinaryTreeForPreparingZ();
+            Node a = prepareBinaryTreeHelper();
 
             Node x = prepareNode("x");
             Node y = prepareNode("y", null, x);
@@ -227,7 +227,7 @@ public class BinaryTreeBehaviors {
             return z;
         }
 
-        private static Node prepareBinaryTreeForPreparingZ() {
+        private static Node prepareBinaryTreeHelper() {
 
             Node h = prepareNode("h");
             Node i = prepareNode("i");
