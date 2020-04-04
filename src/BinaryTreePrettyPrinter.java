@@ -11,7 +11,7 @@ import java.util.Queue;
 public class BinaryTreePrettyPrinter {
 
     public static void main(String[] args) {
-        BinaryTreePrettyPrinter.prettyPrintTree(SampleProvider.prepareBinaryTreeForA());
+        BinaryTreePrettyPrinter.prettyPrintTree(SampleProvider.sampleLargeBinaryTree());
     }
 
     /**
@@ -113,8 +113,9 @@ public class BinaryTreePrettyPrinter {
     }
 
     static class SampleProvider {
-        protected static Node<String> prepareBinaryTreeForA() {
-            Node a = Node.builder()
+
+        protected static Node sampleLargeBinaryTree() {
+            final Node a = Node.builder()
                     .data("a")
                     .left(Node.builder()
                             .data("b")
