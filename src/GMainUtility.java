@@ -14,6 +14,10 @@ import java.util.TreeMap;
  * 1. Ensure this class depends on java packages only
  * (and not third-party libraries)
  *
+ * Useful internal classes:
+ * 1. Table
+ * 2. BinaryTreePrinter (uses Node [external] class)
+ *
  */
 public final class GMainUtility {
 
