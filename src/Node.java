@@ -3,8 +3,8 @@
  */
 class Node<T> {
     T data;
-    Node left;
-    Node right;
+    Node<T> left;
+    Node<T> right;
     Node(T data, Node left, Node right) {
         this.data = data;
         this.left = left;
@@ -26,31 +26,31 @@ class Node<T> {
         private Node left;
         private Node right;
 
-        public Node build() {
+        public Node<T> build() {
             return new Node(this.data, this.left, this.right);
         }
 
-        public NodeBuilder data(T data) {
+        public NodeBuilder<T> data(T data) {
             this.data = data;
             return this;
         }
 
-        public NodeBuilder left(Node left) {
+        public NodeBuilder<T> left(Node left) {
             this.left = left;
             return this;
         }
 
-        public NodeBuilder right(Node right) {
+        public NodeBuilder<T> right(Node right) {
             this.right = right;
             return this;
         }
 
-        public NodeBuilder left() {
+        public NodeBuilder<T> left() {
             this.left = null;
             return this;
         }
 
-        public NodeBuilder right() {
+        public NodeBuilder<T> right() {
             this.right = null;
             return this;
         }
