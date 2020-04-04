@@ -40,7 +40,7 @@ public class RootToLeafPathSumMatch {
         Node root = new Node(10);
         populateData(root);
 
-        // printNode(root);
+        printNode(root);
 
         final int sums[] = new int[] {21, 23, 16, 22, 18, 5};
 
@@ -52,9 +52,9 @@ public class RootToLeafPathSumMatch {
         }
     }
 
-    private boolean doesSumExist(final Node node, final int matchSum) {
+    private boolean doesSumExist(final Node<Integer> node, final int matchSum) {
 
-        System.out.println(String.format(" STEP data=%d, matchSum=%d", node.data, matchSum));
+        System.out.println(String.format(" STEP data=%d, toMatchSum=%d", node.data, matchSum));
 
         // path did not terminate and has high values
         if (matchSum < node.data) {
@@ -93,14 +93,7 @@ public class RootToLeafPathSumMatch {
     }
 
     private void printNode(final Node root) {
-        if (null == root) {
-            return;
-        }
-        System.out.println(root.data);
-        System.out.println("   getting l of: " + root.data);
-        printNode(root.left);
-        System.out.println("   getting r of: " + root.data);
-        printNode(root.right);
+       GMainUtility.printTree(root);
     }
 
     private void populateData(final Node root) {
@@ -112,15 +105,5 @@ public class RootToLeafPathSumMatch {
         root.left.right = new Node(5);
 
         root.right.left = new Node(4);
-    }
-
-    class Node {
-        int data;
-        Node left, right;
-
-        Node(int item) {
-            data = item;
-            left = right = null;
-        }
     }
 }

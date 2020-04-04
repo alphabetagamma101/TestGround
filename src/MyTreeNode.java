@@ -23,14 +23,7 @@ public class MyTreeNode {
     }
 
     private void printNode(final Node root) {
-        if (null == root) {
-            return;
-        }
-        System.out.println(root.data);
-        System.out.println("   getting l of: " + root.data);
-        printNode(root.left);
-        System.out.println("   getting r of: " + root.data);
-        printNode(root.right);
+        GMainUtility.printTree(root);
     }
 
     private void populateData(final Node root) {
@@ -42,16 +35,6 @@ public class MyTreeNode {
         root.left.right = new Node(5);
 
         root.right.left = new Node(4);
-    }
-
-    class Node {
-        int data;
-        Node left, right;
-
-        Node(int item) {
-            data = item;
-            left = right = null;
-        }
     }
 }
 

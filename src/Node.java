@@ -56,3 +56,19 @@ class Node<T> {
         }
     }
 }
+
+/**
+
+ If need, simplest form:
+
+ class Node {
+    int data;
+    MyTreeNode.Node left, right;
+
+    Node(int item) {
+        data = item;
+        left = right = null;
+    }
+ }
+
+*/

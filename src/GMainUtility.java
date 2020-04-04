@@ -23,6 +23,10 @@ import java.util.TreeMap;
  */
 public final class GMainUtility {
 
+    public static <T> void printTree(final Node<T> node) {
+        createBinaryTreePrinter().printTree(node);
+    }
+
     public static Table createTable() {
         return new GMainUtility().new Table();
     }
