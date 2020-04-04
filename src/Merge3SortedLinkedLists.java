@@ -76,6 +76,7 @@ public class Merge3SortedLinkedLists {
         return tmp;
     }
 
+    // note: needs replacement in list, else would use earlier ones
     private void moveMatchingNodeToNextElement(Node tmp) {
         for (int i = 0; i < ALL_LINKED_LISTS.size();i++) {
             Node next = ALL_LINKED_LISTS.get(i);
