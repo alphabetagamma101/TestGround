@@ -1,5 +1,6 @@
 import java.util.Objects;
 
+// Uses inline without extra space
 public class Merge3SortedLinkedLists {
 
     private Node nodeA;
