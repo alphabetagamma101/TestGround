@@ -22,14 +22,14 @@ public class BinaryTreeBehaviors {
     }
 
     public void findHeight() {
-        Node root = SampleProvider.populateDataForBinaryTreeZ();
+        Node<String> root = SampleProvider.populateDataForBinaryTreeZ();
         treePrinter.printTree(root);
 
         System.out.println("Height: " + height(root));
     }
 
     public void findDiameter() {
-        Node root = SampleProvider.populateDataForBinaryTreeZ();
+        Node<String> root = SampleProvider.populateDataForBinaryTreeZ();
         treePrinter.printTree(root);
 
         System.out.println("Diameter: " + diameter(root));
@@ -40,7 +40,7 @@ public class BinaryTreeBehaviors {
     // d = Max ( (1 + leftHeight + rightHeight), <-- if node is part of diameter
     //            Max ( leftDiameter, rightDiameter))
     // see: https://www.youtube.com/watch?v=ey7DYc9OANo
-    private int diameter(Node node) {
+    private int diameter(Node<String> node) {
         if (null == node) {
             return 0;
         }
@@ -60,7 +60,7 @@ public class BinaryTreeBehaviors {
     //
     // height = 1 + number of edges
     // see: https://www.youtube.com/watch?v=_O-mK2g_jhI
-    private int height(Node node) {
+    private int height(Node<String> node) {
         if (null == node) {
             return 0;
         }
@@ -81,14 +81,14 @@ public class BinaryTreeBehaviors {
         treePrinter.printTree(node);
 
         // logic: add to set (no duplicates)
-        Set<String> collector = new LinkedHashSet();
+        Set<String> collector = new LinkedHashSet<>();
 
         collectLeft(node, collector);
         collectRight(node, collector);
         collectLeaf(node, collector);
 
         System.out.println("Boundary traversal: ");
-        collector.stream().forEach(each -> System.out.print(each + " "));
+        collector.forEach(each -> System.out.print(each + " "));
         System.out.println();
         System.out.println(String.format("(total=%d)", collector.size()));
     }
@@ -114,7 +114,7 @@ public class BinaryTreeBehaviors {
     }
 
     // part-of: boundary-traversal of binary tree
-    private void collectRight(Node node, Set<String> collector) {
+    private void collectRight(Node<String> node, Set<String> collector) {
         if (null == node) {
             return;
         }
@@ -122,19 +122,19 @@ public class BinaryTreeBehaviors {
         // System.out.println(" current2: " + node.data);
 
         if (null != node.right) {
-            addToCollector(collector, (String) node.data);
+            addToCollector(collector, node.data);
             collectRight(node.right, collector);
         } else {
             // right is null
             if (null != node.left) {
-                addToCollector(collector, (String) node.data);
+                addToCollector(collector, node.data);
                 collectRight(node.left, collector);
             }
         }
     }
 
     // part-of: boundary-traversal of binary tree
-    private void collectLeaf(Node node, Set<String> collector) {
+    private void collectLeaf(Node<String> node, Set<String> collector) {
         if (null == node) {
             return;
         }
@@ -145,7 +145,7 @@ public class BinaryTreeBehaviors {
             collectLeaf(node.left, collector);
         }
         if (isLeaf(node)) {
-            addToCollector(collector, (String) node.data);
+            addToCollector(collector, node.data);
         }
         if (null != node.right) {
             collectLeaf(node.right, collector);
@@ -157,7 +157,7 @@ public class BinaryTreeBehaviors {
         collector.add(data);
     }
 
-    private boolean isLeaf(Node node) {
+    private boolean isLeaf(Node<?> node) {
         return (null == node.left) && (null == node.right);
     }
 
@@ -217,44 +217,44 @@ public class BinaryTreeBehaviors {
         }
 
         protected static Node<String> populateDataForBinaryTreeZ() {
-            Node a = prepareBinaryTreeHelper();
+            Node<String> a = prepareBinaryTreeHelper();
 
-            Node x = prepareNode("x");
-            Node y = prepareNode("y", null, x);
+            Node<String> x = prepareNode("x");
+            Node<String> y = prepareNode("y", null, x);
 
-            Node z = prepareNode("z", a, y);
+            Node<String> z = prepareNode("z", a, y);
 
             return z;
         }
 
         private static Node<String> prepareBinaryTreeHelper() {
 
-            Node h = prepareNode("h");
-            Node i = prepareNode("i");
+            Node<String> h = prepareNode("h");
+            Node<String> i = prepareNode("i");
 
-            Node f = prepareNode("f");
-            Node g = prepareNode("g", h, i);
-            Node l = prepareNode("l");
-            Node m = prepareNode("m");
+            Node<String> f = prepareNode("f");
+            Node<String> g = prepareNode("g", h, i);
+            Node<String> l = prepareNode("l");
+            Node<String> m = prepareNode("m");
 
-            Node d = prepareNode("d");
-            Node e = prepareNode("e", f, g);
-            Node j = prepareNode("j");
-            Node k = prepareNode("k", l, m);
+            Node<String> d = prepareNode("d");
+            Node<String> e = prepareNode("e", f, g);
+            Node<String> j = prepareNode("j");
+            Node<String> k = prepareNode("k", l, m);
 
-            Node b = prepareNode("b", d, e);
-            Node c = prepareNode("c", j, k);
+            Node<String> b = prepareNode("b", d, e);
+            Node<String> c = prepareNode("c", j, k);
 
-            Node a = prepareNode("a", b, c);
+            Node<String> a = prepareNode("a", b, c);
 
             return a;
         }
 
-        private static Node<String> prepareNode(String data) {
+        private static <T> Node<T> prepareNode(String data) {
             return new Node(data, null, null);
         }
 
-        private static Node<String> prepareNode(String data, Node left, Node right) {
+        private static <T>  Node<T> prepareNode(String data, Node<T> left, Node<T> right) {
             return new Node(data, left, right);
         }
     }
