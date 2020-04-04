@@ -102,12 +102,12 @@ public class BinaryTreeBehaviors {
         // System.out.println(" current: " + node.data);
 
         if (null != node.left) {
-            addToCollector(collector, node.data);
+            addToCollector(collector, (String) node.data);
             collectLeft(node.left, collector);
         } else {
             // left is null
             if (null != node.right) {
-                addToCollector(collector, node.data);
+                addToCollector(collector, (String) node.data);
                 collectLeft(node.right, collector);
             }
         }
@@ -122,12 +122,12 @@ public class BinaryTreeBehaviors {
         // System.out.println(" current2: " + node.data);
 
         if (null != node.right) {
-            addToCollector(collector, node.data);
+            addToCollector(collector, (String) node.data);
             collectRight(node.right, collector);
         } else {
             // right is null
             if (null != node.left) {
-                addToCollector(collector, node.data);
+                addToCollector(collector, (String) node.data);
                 collectRight(node.left, collector);
             }
         }
@@ -145,7 +145,7 @@ public class BinaryTreeBehaviors {
             collectLeaf(node.left, collector);
         }
         if (isLeaf(node)) {
-            addToCollector(collector, node.data);
+            addToCollector(collector, (String) node.data);
         }
         if (null != node.right) {
             collectLeaf(node.right, collector);
@@ -172,7 +172,7 @@ public class BinaryTreeBehaviors {
 
     static class SampleProvider {
 
-        protected static Node prepareBinaryTreeForA() {
+        protected static Node<String> prepareBinaryTreeForA() {
             Node a = Node.builder()
                     .data("a")
                     .left(Node.builder()
@@ -216,7 +216,7 @@ public class BinaryTreeBehaviors {
             return a;
         }
 
-        protected static Node populateDataForBinaryTreeZ() {
+        protected static Node<String> populateDataForBinaryTreeZ() {
             Node a = prepareBinaryTreeHelper();
 
             Node x = prepareNode("x");
@@ -227,7 +227,7 @@ public class BinaryTreeBehaviors {
             return z;
         }
 
-        private static Node prepareBinaryTreeHelper() {
+        private static Node<String> prepareBinaryTreeHelper() {
 
             Node h = prepareNode("h");
             Node i = prepareNode("i");
@@ -250,11 +250,11 @@ public class BinaryTreeBehaviors {
             return a;
         }
 
-        private static Node prepareNode(String data) {
+        private static Node<String> prepareNode(String data) {
             return new Node(data, null, null);
         }
 
-        private static Node prepareNode(String data, Node left, Node right) {
+        private static Node<String> prepareNode(String data, Node left, Node right) {
             return new Node(data, left, right);
         }
     }

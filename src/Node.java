@@ -1,28 +1,28 @@
 /**
  * Part of GMainUtility utils
  */
-class Node {
-    String data;
+class Node<T> {
+    T data;
     Node left;
     Node right;
-    Node(String data, Node left, Node right) {
+    Node(T data, Node left, Node right) {
         this.data = data;
         this.left = left;
         this.right = right;
     }
-    Node(String data) {
+    Node(T data) {
         this(data, null, null);
     }
 
-    public static NodeBuilder builder() {
-        return new NodeBuilder();
+    public static <U> NodeBuilder<U> builder() {
+        return new NodeBuilder<U>();
     }
 
     /**
      * Class NodeBuilder
      */
-    static class NodeBuilder {
-        private String data;
+    static class NodeBuilder<T> {
+        private T data;
         private Node left;
         private Node right;
 
@@ -30,7 +30,7 @@ class Node {
             return new Node(this.data, this.left, this.right);
         }
 
-        public NodeBuilder data(String data) {
+        public NodeBuilder data(T data) {
             this.data = data;
             return this;
         }

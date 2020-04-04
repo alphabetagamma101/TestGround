@@ -111,6 +111,9 @@ public final class GMainUtility {
             return stringBuilder.toString();
         }
 
+        /**
+         * Class - quick utils for table class
+         */
         class Utils {
 
             private static final String NEWLINE = "\n";
@@ -205,11 +208,11 @@ public final class GMainUtility {
         private final String LEFT_SLASH = "/";
         private final String RIGHT_SLASH = "\\";
 
-        public void printTree(Node node) {
+        public <T> void printTree(Node<T> node) {
             printTree(node, 3);
         }
 
-        public void printTree(Node node, int printColumnLength) {
+        public <T> void printTree(Node<T>  node, int printColumnLength) {
 
             GMainUtility.Table theTable = new GMainUtility.Table();
             theTable.setPrintColumnLength(printColumnLength);
